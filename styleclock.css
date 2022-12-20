@@ -1,0 +1,93 @@
+*{
+  box-sizing:border-box;
+ font-family:Gotham Rounded,sans-serif;
+}
+body{
+  background:lightcyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height:80vh;
+  overflow: hidden;
+  }
+.clock{
+  width:300px;
+  height:300px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  border:2px solid black;
+  position: relative;
+  /* The element is positioned according to the normal flow of the document, and then offset relative to itself based on the values of top, right, bottom, and left. The offset does not affect the position of any other elements; thus, the space given for the element in the page layout is the same as if position were static. */
+}
+.clock .number{
+   --rotation:0;  /*by default */
+  position:absolute;
+  /* The element is removed from the normal document flow, and no space is created for the element in the page layout. It is positioned relative to its closest positioned ancestor, if any; otherwise, it is placed relative to the initial containing block. Its final position is determined by the values of top, right, bottom, and left. */
+  width:100%;
+  height:100%;
+  /* background-color:blue; */
+  text-align: center;
+  transform:rotate(var(--rotation));/*variable name is rotation*/
+ font-size: 1.5rem;
+}
+.clock .number1{--rotation:30deg;}
+.clock .number2{--rotation:60deg;}
+.clock .number3{--rotation:90deg;}
+.clock .number4{--rotation:120deg;}
+.clock .number5{--rotation:150deg;}
+.clock .number6{--rotation:180deg;}
+.clock .number7{--rotation:210deg;}
+.clock .number8{--rotation:240deg;}
+.clock .number9{--rotation:270deg;}
+.clock .number10{--rotation:300deg;}
+.clock .number11{--rotation:330deg;}
+
+.clock .hand{
+  --rotation:0;
+  position:absolute;
+  bottom:50%;
+  left:50%;
+
+  background-color: black;
+  border:1px solid white;
+  z-index: 10;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform-origin: bottom;
+  transform:translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+.clock::after/*pseudo class*/
+{
+  content:'';
+  position:absolute;
+  background-color: black;
+  z-index:11;
+  width: 15px;
+  height: 15px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+.clock .hand.second{
+  height:45%;
+  width:3px;
+  background-color: red;
+
+}
+.clock .hand.minute{
+  height:40%;
+  width:7px;
+  background-color: black;
+
+}
+.clock .hand.hour{
+  height:35%;
+  width:10px;
+  background-color: black;
+
+}
+footer {
+  position: fixed;
+  bottom: 0;
+}
